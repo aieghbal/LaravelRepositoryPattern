@@ -12,4 +12,11 @@ class UserController extends Controller
         $user = $user->getByUserById(1);
         dd($user);
     }
+
+    public function getByID()
+    {
+        $users = resolve('users');
+        $user = $users->getByUserById(1);
+        dd($user);
+    }
 }

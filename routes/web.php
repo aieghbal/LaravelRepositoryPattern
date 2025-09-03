@@ -19,5 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/get_user', [UserController::class, 'getByID'])->name('get-user');
 
 require __DIR__.'/auth.php';
