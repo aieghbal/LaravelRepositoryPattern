@@ -3,20 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Repositories\UsersRepository;
 
 class UserController extends Controller
 {
-    public function index(UsersRepository $user){
-        $user = $user->getByUserById(1);
-        dd($user);
+    private $my_user;
+
+    public function __construct(UsersRepository $my_user)
+    {
+        $this->my_user = $my_user;
+    }
+
+    public function index()
+    {
+        return $this->my_user->getByUserById(1);
     }
 
     public function getByID()
     {
-        $users = resolve('users');
-        $user = $users->getByUserById(1);
-        dd($user);
+        return $this->my_user->getByUserById(1);
+    }
+
+    public function all()
+    {
+        return $this->my_user->all();
     }
 }
